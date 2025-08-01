@@ -1,0 +1,106 @@
+{
+  "name": "complete-supabase-backup",
+  "version": "1.0.0",
+  "description": "Complete Supabase backup and restore system - backs up schema, data, functions, triggers, RLS policies, and more",
+  "main": "backup.js",
+  "bin": {
+    "supabase-backup": "./backup.js"
+  },
+  "scripts": {
+    "backup": "node backup.js",
+    "backup:schema": "node backup.js --schema-only",
+    "backup:data": "node backup.js --data-only",
+    "backup:fast": "node backup.js --fast",
+    "backup:sql": "node backup.js --sql-only",
+    "backup:no-csv": "node backup.js --no-csv",
+    "dev": "node backup.js --fast --no-csv",
+    "test": "node backup.js --fast --schema-only",
+    "test:schema": "node backup.js --schema-only --no-csv",
+    "test:data": "node backup.js --data-only --fast",
+    "test:large": "node backup.js --no-csv",
+    "help": "node backup.js --help",
+    "setup": "cp .env.example .env && echo 'Please configure your .env file with Supabase credentials'",
+    "clean": "rm -rf supabase-backup/*",
+    "docs": "echo 'Check README.md for complete documentation'",
+    "validate-env": "node -e \"require('dotenv').config(); if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) { console.error('Missing environment variables'); process.exit(1); } console.log('Environment configured correctly');\""
+  },
+  "keywords": [
+    "supabase",
+    "backup",
+    "restore",
+    "database",
+    "postgresql",
+    "migration",
+    "schema",
+    "data",
+    "functions",
+    "triggers",
+    "rls",
+    "policies",
+    "export",
+    "import",
+    "sql",
+    "json",
+    "csv"
+  ],
+  "author": {
+    "name": "Complete Supabase Backup Team",
+    "email": "raihan.raju@gmail.com",
+    "url": "https://github.com/Raihan-Sharif/supabase-backup-system"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Raihan-Sharif/supabase-backup-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Raihan-Sharif/supabase-backup-system/issues",
+    "email": "raihan.raju@gmail.com"
+  },
+  "homepage": "https://github.com/Raihan-Sharif/supabase-backup-system#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "files": [
+    "backup.js",
+    "restore.js",
+    "README.md",
+    "LICENSE",
+    ".env.example"
+  ],
+  "config": {
+    "backup": {
+      "defaultMaxRows": 100000,
+      "defaultFormats": [
+        "sql",
+        "json",
+        "csv"
+      ],
+      "chunkSize": 1000
+    }
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/Raihan-Sharif"
+  },
+  "preferGlobal": false,
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}
