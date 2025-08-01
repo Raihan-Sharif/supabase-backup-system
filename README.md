@@ -48,7 +48,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/supabase-backup-system.git
+git clone https://github.com/Raihan-Sharif/supabase-backup-system.git
 cd supabase-backup-system
 
 # Install dependencies
@@ -254,7 +254,7 @@ const BACKUP_CONFIG = {
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/supabase-backup-system.git
+git clone https://github.com/Raihan-Sharif/supabase-backup-system.git
 cd supabase-backup-system
 
 # Install dependencies
@@ -333,8 +333,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Support
 
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/yourusername/supabase-backup-system/issues)
-- 💡 **Feature Requests**: [GitHub Discussions](https://github.com/yourusername/supabase-backup-system/discussions)
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/Raihan-Sharif/supabase-backup-system/issues)
+- 💡 **Feature Requests**: [GitHub Discussions](https://github.com/Raihan-Sharif/supabase-backup-system/discussions)
 - 📖 **Documentation**: Check the generated README.md in backup folders
 - 💬 **Community**: Join our discussions for help and tips
 
