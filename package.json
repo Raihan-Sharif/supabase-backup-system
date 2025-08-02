@@ -1,28 +1,43 @@
 {
-  "name": "complete-supabase-backup",
-  "version": "1.0.0",
-  "description": "Complete Supabase backup and restore system - backs up schema, data, functions, triggers, RLS policies, and more",
-  "main": "backup.js",
+  "name": "professional-supabase-backup",
+  "version": "2.0.0",
+  "description": "Professional-grade Supabase backup and restore system with complete schema extraction, function definitions, and comprehensive data handling",
+  "main": "professional-supabase-backup.js",
   "bin": {
-    "supabase-backup": "./backup.js"
+    "supabase-backup-pro": "./professional-supabase-backup.js"
   },
   "scripts": {
-    "backup": "node backup.js",
-    "backup:schema": "node backup.js --schema-only",
-    "backup:data": "node backup.js --data-only",
-    "backup:fast": "node backup.js --fast",
-    "backup:sql": "node backup.js --sql-only",
-    "backup:no-csv": "node backup.js --no-csv",
-    "dev": "node backup.js --fast --no-csv",
-    "test": "node backup.js --fast --schema-only",
-    "test:schema": "node backup.js --schema-only --no-csv",
-    "test:data": "node backup.js --data-only --fast",
-    "test:large": "node backup.js --no-csv",
-    "help": "node backup.js --help",
+    "backup": "node professional-supabase-backup.js",
+    "backup:complete": "node professional-supabase-backup.js",
+    "backup:schema": "node professional-supabase-backup.js --schema-only",
+    "backup:data": "node professional-supabase-backup.js --data-only",
+    "backup:fast": "node professional-supabase-backup.js --fast",
+    "backup:sql": "node professional-supabase-backup.js --sql-only",
+    "backup:no-csv": "node professional-supabase-backup.js --no-csv",
+    "backup:minimal": "node professional-supabase-backup.js --fast --no-csv --no-functions",
+    "dev": "node professional-supabase-backup.js --fast --no-csv",
+    "test": "node professional-supabase-backup.js --fast --schema-only",
+    "test:schema": "node professional-supabase-backup.js --schema-only --no-csv",
+    "test:data": "node professional-supabase-backup.js --data-only --fast",
+    "test:functions": "node professional-supabase-backup.js --schema-only --no-csv --sql-only",
+    "test:large": "node professional-supabase-backup.js --no-csv",
+    "help": "node professional-supabase-backup.js --help",
     "setup": "cp .env.example .env && echo 'Please configure your .env file with Supabase credentials'",
     "clean": "rm -rf supabase-backup/*",
+    "clean:old": "find supabase-backup -type d -mtime +7 -exec rm -rf {} +",
     "docs": "echo 'Check README.md for complete documentation'",
-    "validate-env": "node -e \"require('dotenv').config(); if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) { console.error('Missing environment variables'); process.exit(1); } console.log('Environment configured correctly');\""
+    "validate-env": "node -e \"require('dotenv').config(); if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) { console.error('Missing environment variables'); process.exit(1); } console.log('Environment configured correctly');\"",
+    "backup:production": "NODE_ENV=production node professional-supabase-backup.js",
+    "backup:staging": "NODE_ENV=staging node professional-supabase-backup.js --fast",
+    "backup:development": "NODE_ENV=development node professional-supabase-backup.js --fast --no-csv",
+    "schedule:daily": "node professional-supabase-backup.js --no-csv",
+    "schedule:weekly": "node professional-supabase-backup.js",
+    "schedule:monthly": "node professional-supabase-backup.js --sql-only",
+    "restore:help": "echo 'Use complete-restore.sql in your Supabase SQL Editor for full restoration'",
+    "analyze": "node -e \"const fs = require('fs'); const dirs = fs.readdirSync('supabase-backup').filter(d => fs.statSync(`supabase-backup/${d}`).isDirectory()); console.log(`Found ${dirs.length} backups:`); dirs.forEach(d => console.log(`  - ${d}`));\"",
+    "lint": "eslint professional-supabase-backup.js",
+    "format": "prettier --write professional-supabase-backup.js",
+    "audit": "npm audit && node -e \"console.log('Security audit completed')\""
   },
   "keywords": [
     "supabase",
@@ -35,29 +50,36 @@
     "data",
     "functions",
     "triggers",
+    "views",
     "rls",
     "policies",
     "export",
     "import",
     "sql",
     "json",
-    "csv"
+    "csv",
+    "professional",
+    "enterprise",
+    "production",
+    "automation",
+    "devops",
+    "ci-cd"
   ],
   "author": {
-    "name": "Complete Supabase Backup Team",
+    "name": "Professional Supabase Backup Team",
     "email": "raihan.raju@gmail.com",
-    "url": "https://github.com/Raihan-Sharif/supabase-backup-system"
+    "url": "https://github.com/Raihan-Sharif/professional-supabase-backup"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Raihan-Sharif/supabase-backup-system.git"
+    "url": "https://github.com/Raihan-Sharif/professional-supabase-backup.git"
   },
   "bugs": {
-    "url": "https://github.com/Raihan-Sharif/supabase-backup-system/issues",
+    "url": "https://github.com/Raihan-Sharif/professional-supabase-backup/issues",
     "email": "raihan.raju@gmail.com"
   },
-  "homepage": "https://github.com/Raihan-Sharif/supabase-backup-system#readme",
+  "homepage": "https://github.com/Raihan-Sharif/professional-supabase-backup#readme",
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0",
     "dotenv": "^16.3.1"
@@ -77,8 +99,8 @@
     "win32"
   ],
   "files": [
-    "backup.js",
-    "restore.js",
+    "professional-supabase-backup.js",
+    "enhanced-supabase-setup.sql",
     "README.md",
     "LICENSE",
     ".env.example"
@@ -91,7 +113,14 @@
         "json",
         "csv"
       ],
-      "chunkSize": 1000
+      "chunkSize": 1000,
+      "timeout": 30000
+    },
+    "professional": {
+      "enableFunctionExtraction": true,
+      "enableSchemaAnalysis": true,
+      "enablePerformanceMetrics": true,
+      "enableErrorReporting": true
     }
   },
   "funding": {
@@ -102,5 +131,19 @@
   "private": false,
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "directories": {
+    "lib": "./",
+    "doc": "./docs",
+    "example": "./examples"
+  },
+  "cpu": [
+    "x64",
+    "arm64"
+  ],
+  "bundleDependencies": false,
+  "optionalDependencies": {},
+  "peerDependencies": {},
+  "workspaces": [],
+  "packageManager": "npm@8.0.0"
 }

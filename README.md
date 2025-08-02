@@ -1,46 +1,51 @@
-# 🚀 Complete Supabase Backup & Restore System
+# 🚀 Professional Supabase Backup & Restore System v2.0
 
-**The most comprehensive backup solution for Supabase databases** - backs up everything including tables, data, functions, triggers, RLS policies, indexes, and more!
+**The most comprehensive, production-ready backup solution for Supabase databases** - now with complete function definitions, enhanced schema extraction, and professional-grade reliability.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen)](https://nodejs.org/)
 [![Supabase](https://img.shields.io/badge/Supabase-Compatible-green)](https://supabase.com/)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue)](https://github.com/Raihan-Sharif/supabase-backup-system)
 
-## ✨ Features
+## ✨ What's New in v2.0
 
-### 🏗️ Complete Schema Backup
+### 🔧 Complete Function Extraction
 
-- ✅ **Tables** with proper data types and constraints
-- ✅ **Views** and materialized views
-- ✅ **Functions** and stored procedures
-- ✅ **Triggers** and event handlers
-- ✅ **RLS Policies** (Row Level Security)
-- ✅ **Indexes** and constraints
-- ✅ **Sequences** and auto-increment columns
-- ✅ **Extensions** and custom types
+- ✅ **Full function code** with complete CREATE FUNCTION statements
+- ✅ **Function bodies** extracted with proper syntax
+- ✅ **Arguments and return types** preserved
+- ✅ **Comments and metadata** included
 
-### 💾 Comprehensive Data Backup
+### 🏗️ Enhanced Schema Coverage
 
-- ✅ **All table data** with configurable limits
-- ✅ **Large table handling** with chunked processing
-- ✅ **Data type preservation** (JSON, UUID, timestamps, etc.)
-- ✅ **Progress tracking** for long operations
-- ✅ **Error recovery** and partial backups
+- ✅ **Views** with complete definitions
+- ✅ **Triggers** with full action statements
+- ✅ **Constraints** with proper relationships
+- ✅ **Sequences** with current values
+- ✅ **Indexes** with complete definitions
+- ✅ **RLS Policies** with exact conditions
 
-### 📄 Multiple Export Formats
+### 💼 Professional Features
 
-- 🔄 **SQL Scripts** - Ready-to-run restore scripts
-- 📊 **JSON Export** - Structured data for analysis
-- 📈 **CSV Files** - Individual table exports for Excel/analysis
-- 📋 **Documentation** - Comprehensive backup reports
+- ✅ **Progress tracking** with detailed statistics
+- ✅ **Error handling** and recovery mechanisms
+- ✅ **Multiple restore options** (complete, schema-only, data-only)
+- ✅ **Comprehensive logging** and reporting
+- ✅ **Production-ready** with performance optimizations
 
-### 🛡️ Production Ready
+## 📊 Complete Backup Coverage
 
-- ⚡ **Fast & Efficient** - Optimized for large databases
-- 🔒 **Secure** - Uses service role keys safely
-- 🌍 **Universal** - Works with any Supabase project
-- 📈 **Scalable** - Handles databases of any size
-- 🔄 **Reliable** - Comprehensive error handling
+| Component    | v1.0          | v2.0 Pro             | Description                        |
+| ------------ | ------------- | -------------------- | ---------------------------------- |
+| Tables       | ✅            | ✅                   | Complete structure with data types |
+| Data         | ✅            | ✅                   | All rows with chunked processing   |
+| Functions    | ⚠️ Names only | ✅ **Complete code** | Full CREATE statements with bodies |
+| Views        | ❌            | ✅                   | Complete view definitions          |
+| Triggers     | ❌            | ✅                   | Full trigger statements            |
+| RLS Policies | ⚠️ Basic      | ✅ **Complete**      | Exact policy conditions            |
+| Indexes      | ❌            | ✅                   | All indexes with definitions       |
+| Sequences    | ❌            | ✅                   | Sequences with current values      |
+| Constraints  | ❌            | ✅                   | Foreign keys, checks, unique       |
 
 ## 🚀 Quick Start
 
@@ -58,7 +63,16 @@ npm install
 cp .env.example .env
 ```
 
-### 2. Configuration
+### 2. Database Setup (Important!)
+
+Run this SQL in your Supabase SQL Editor to enable complete schema extraction:
+
+```sql
+-- Copy and run the contents of enhanced-supabase-setup.sql
+-- This enables function definition extraction and enhanced schema analysis
+```
+
+### 3. Configuration
 
 Edit `.env` file with your Supabase credentials:
 
@@ -67,259 +81,341 @@ NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
 ```
 
-### 3. Run Your First Backup
+### 4. Run Your First Professional Backup
 
 ```bash
-# Complete backup (schema + data)
+# Complete professional backup
 npm run backup
 
 # Or run directly
-node backup.js
+node professional-supabase-backup.js
 ```
 
-### 4. Restore Your Database
+## 📖 Usage Guide
+
+### Basic Commands
 
 ```bash
-# In your target Supabase project SQL Editor:
-# 1. Copy contents of 'complete-restore.sql'
-# 2. Paste and execute
-# 3. Your database is restored! ✅
-```
+# Complete backup (recommended)
+npm run backup:complete
 
-## 📖 Usage Examples
-
-### Basic Usage
-
-```bash
-# Complete backup with all features
-npm run backup
-
-# Schema only (no data)
+# Schema only with full function code
 npm run backup:schema
 
-# Data only (no schema)
+# Data only
 npm run backup:data
 
-# Fast backup (limited rows)
+# Fast backup for development
 npm run backup:fast
+
+# SQL files only
+npm run backup:sql
 ```
 
 ### Advanced Options
 
 ```bash
 # Custom configurations
-node backup.js --schema-only --no-csv     # Schema without CSV files
-node backup.js --fast --sql-only          # Quick SQL-only backup
-node backup.js --no-functions --no-policies  # Skip functions and policies
+node professional-supabase-backup.js --schema-only --no-csv
+node professional-supabase-backup.js --fast --sql-only
+node professional-supabase-backup.js --no-functions --no-policies
 ```
 
-### Programmatic Usage
+### Environment-Specific Backups
 
-```javascript
-const { CompleteSupabaseBackup } = require("./backup.js");
+```bash
+# Production backup
+npm run backup:production
 
-// Custom backup configuration
-const backup = new CompleteSupabaseBackup({
-  includeData: true,
-  maxRowsPerTable: 10000,
-  exportFormats: ["sql", "json"],
-});
+# Staging backup (faster)
+npm run backup:staging
 
-// Run backup
-const results = await backup.run();
-console.log(`Backed up ${results.statistics.totalTables} tables`);
+# Development backup (minimal)
+npm run backup:development
 ```
 
-## 📁 Output Structure
+### Scheduled Backups
+
+```bash
+# Daily backup (no CSV for speed)
+npm run schedule:daily
+
+# Weekly complete backup
+npm run schedule:weekly
+
+# Monthly schema backup
+npm run schedule:monthly
+```
+
+## 📁 Professional Output Structure
 
 ```
 supabase-backup/
 └── 2024-01-15T10-30-45/
-    ├── complete-restore.sql      # 🔄 Full database restore script
-    ├── schema-only.sql           # 🏗️ Schema without data
-    ├── complete-backup.json      # 📊 Complete backup data
-    ├── backup-summary.json       # 📈 Statistics and reports
-    ├── README.md                 # 📖 Backup documentation
+    ├── complete-restore.sql      # 🔄 Complete database restore
+    ├── schema-only.sql           # 🏗️ Schema with full function code
+    ├── data-only.sql             # 💾 Data-only restore
+    ├── complete-backup.json      # 📊 Complete backup with metadata
+    ├── backup-summary.json       # 📈 Professional statistics
+    ├── README.md                 # 📖 Comprehensive documentation
     └── csv-data/                 # 📁 Individual table CSVs
         ├── users.csv
         ├── posts.csv
-        ├── projects.csv
         └── ...
 ```
 
-## 🔄 Restore Options
+## 🔄 Professional Restore Options
 
 ### Option 1: Complete Restore (Recommended)
 
-1. Create new Supabase project
-2. Open Supabase SQL Editor
-3. Copy/paste `complete-restore.sql`
-4. Execute script
-5. ✅ Database fully restored!
+```sql
+-- In Supabase SQL Editor:
+-- 1. Copy complete-restore.sql contents
+-- 2. Execute the script
+-- 3. ✅ Everything restored with full function code!
+```
 
-### Option 2: Schema + Data Separately
+### Option 2: Staged Restore
 
-1. Run `schema-only.sql` first
-2. Import data using CSV files or JSON
-3. Verify functionality
+```sql
+-- 1. Execute schema-only.sql first
+-- 2. Execute data-only.sql second
+-- 3. Verify functions and triggers
+```
 
 ### Option 3: Selective Restore
 
-1. Extract specific tables from SQL script
-2. Use individual CSV files
-3. Custom restoration process
+- Extract specific sections from SQL files
+- Use individual CSV files for specific tables
+- Restore only needed functions or policies
 
-## ⚙️ Configuration Options
+## ⚙️ Professional Configuration
 
 ```javascript
 const BACKUP_CONFIG = {
-  // Schema objects
-  includeTables: true, // Backup table structures
-  includeViews: true, // Backup views
-  includeFunctions: true, // Backup functions
-  includeTriggers: true, // Backup triggers
-  includePolicies: true, // Backup RLS policies
-  includeIndexes: true, // Backup indexes
-  includeSequences: true, // Backup sequences
+  // Enhanced schema extraction
+  includeFunctions: true, // Full function code
+  includeViews: true, // Complete view definitions
+  includeTriggers: true, // Full trigger statements
+  includePolicies: true, // Complete RLS policies
+  includeIndexes: true, // All indexes
+  includeSequences: true, // Sequences with values
+  includeConstraints: true, // Foreign keys, checks
 
-  // Data options
-  includeData: true, // Include table data
-  maxRowsPerTable: 100000, // Row limit per table
-  maxTableSizeMB: 500, // Size limit per table
+  // Professional data handling
+  maxRowsPerTable: 100000, // Configurable limits
+  queryTimeout: 30000, // 30-second timeout
+  chunkSize: 1000, // Batch processing
 
-  // Export formats
+  // Multiple output formats
   exportFormats: ["sql", "json", "csv"],
 
-  // System tables to exclude
-  excludeDataTables: ["auth.users", "auth.sessions", "storage.objects"],
+  // Production options
+  createRestoreScript: true,
+  includeDropStatements: true,
+  generateReadme: true,
+  compressOutput: false,
 };
 ```
 
 ## 🛠️ Advanced Features
 
-### Large Database Support
+### Complete Function Extraction
 
-- **Chunked processing** for tables with millions of rows
-- **Memory optimization** prevents crashes on large datasets
-- **Progress tracking** shows real-time backup status
-- **Selective backup** with table inclusion/exclusion
+The system now extracts full function definitions with:
 
-### Error Handling & Recovery
+```sql
+-- Example of extracted function
+CREATE OR REPLACE FUNCTION "public"."increment_post_view"(post_id INTEGER)
+RETURNS VOID
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $function$
+BEGIN
+    INSERT INTO post_views (post_id, view_date, view_count)
+    VALUES (post_id, CURRENT_DATE, 1)
+    ON CONFLICT (post_id, view_date)
+    DO UPDATE SET view_count = post_views.view_count + 1;
+END;
+$function$;
+```
 
-- **Graceful error handling** continues backup on table failures
-- **Detailed error reporting** with specific error messages
-- **Partial backup support** saves what's accessible
-- **Retry mechanisms** for transient failures
+### Enhanced Schema Analysis
 
-### Security & Performance
+- **Table structures** with complete column metadata
+- **Views** with full SQL definitions
+- **Triggers** with complete action statements
+- **RLS policies** with exact conditions
+- **Indexes** with performance characteristics
+- **Constraints** with relationship mappings
 
-- **Service role authentication** for full database access
-- **Connection pooling** for efficient database queries
-- **Rate limiting** prevents overwhelming the database
-- **Safe defaults** exclude sensitive system tables
+### Professional Error Handling
 
-## 📊 What Gets Backed Up
+- **Graceful degradation** when permissions are limited
+- **Detailed error reporting** with context
+- **Fallback mechanisms** for restricted environments
+- **Progress tracking** with real-time updates
 
-### ✅ Schema Objects
+## 📊 Performance & Statistics
 
-| Object Type  | Included | Notes                              |
-| ------------ | -------- | ---------------------------------- |
-| Tables       | ✅       | Complete structure with data types |
-| Views        | ✅       | Including materialized views       |
-| Functions    | ✅       | PostgreSQL/PL/pgSQL functions      |
-| Triggers     | ✅       | Table triggers and event handlers  |
-| RLS Policies | ✅       | Row Level Security policies        |
-| Indexes      | ✅       | All indexes except system indexes  |
-| Sequences    | ✅       | Auto-increment sequences           |
-| Constraints  | ✅       | Primary keys, foreign keys, checks |
-| Extensions   | ✅       | Custom PostgreSQL extensions       |
+The professional system provides comprehensive metrics:
 
-### ✅ Data
+```json
+{
+  "statistics": {
+    "totalSchemas": 2,
+    "totalTables": 25,
+    "totalViews": 3,
+    "totalFunctions": 18,
+    "totalTriggers": 5,
+    "totalPolicies": 25,
+    "totalIndexes": 45,
+    "totalSequences": 8,
+    "totalRows": 50000,
+    "backupDuration": 45000,
+    "errorRate": 0
+  }
+}
+```
 
-- **All table data** with configurable row limits
-- **Proper data type handling** (JSON, UUID, timestamps)
-- **Large object support** with chunked processing
-- **Referential integrity** maintained in restore order
+## 🔧 Troubleshooting
 
-## 🔧 Development Setup
+### Common Issues
 
-### Prerequisites
+1. **Function extraction fails**
 
-- Node.js 16.0.0 or higher
-- npm or yarn
-- Supabase project with service role key
-- Git (for version control)
+   ```bash
+   # Ensure enhanced-supabase-setup.sql is executed
+   # Check service role permissions
+   ```
 
-### Local Development
+2. **Schema access denied**
+
+   ```bash
+   # The system falls back to REST API discovery
+   # Some features may be limited
+   ```
+
+3. **Large database timeouts**
+   ```bash
+   # Use --fast flag for development
+   # Increase queryTimeout in config
+   ```
+
+### Function Extraction Requirements
+
+For complete function extraction, run the setup SQL:
+
+```sql
+-- This creates the exec_sql function and schema extraction helpers
+-- Required for professional-grade backup capabilities
+```
+
+## 🚦 Migration from v1.0
+
+### Breaking Changes
+
+- New file structure with professional naming
+- Enhanced configuration options
+- Additional dependencies for schema extraction
+
+### Migration Steps
+
+1. **Backup existing data** with v1.0
+2. **Install v2.0** professional system
+3. **Run setup SQL** in Supabase
+4. **Configure new options** as needed
+5. **Test restore** on development database
+
+## 📈 Production Deployment
+
+### Docker Usage
+
+```dockerfile
+FROM node:16-alpine
+WORKDIR /app
+COPY . .
+RUN npm install
+CMD ["npm", "run", "backup:production"]
+```
+
+### GitHub Actions
+
+```yaml
+name: Daily Supabase Backup
+on:
+  schedule:
+    - cron: "0 2 * * *" # Daily at 2 AM
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+      - run: npm install
+      - run: npm run backup:production
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+```
+
+### Kubernetes CronJob
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: supabase-backup
+spec:
+  schedule: "0 2 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: backup
+              image: supabase-backup-system:latest
+              command: ["npm", "run", "backup:production"]
+```
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md).
+
+### Development Setup
 
 ```bash
-# Clone repository
 git clone https://github.com/Raihan-Sharif/supabase-backup-system.git
 cd supabase-backup-system
-
-# Install dependencies
 npm install
-
-# Copy environment file
-cp .env.example .env
-
-# Configure your Supabase credentials in .env
-# Run development backup
 npm run dev
 ```
 
 ### Testing
 
 ```bash
-# Test backup functionality
-npm test
-
-# Test with different configurations
-npm run test:schema
-npm run test:data
-npm run test:large
+npm run test:schema     # Test schema extraction
+npm run test:data       # Test data backup
+npm run test:functions  # Test function extraction
 ```
 
-## 🤝 Contributing
+## 📋 Roadmap
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+### v2.1 (Coming Soon)
 
-### How to Contribute
+- [ ] **Incremental backups** with change detection
+- [ ] **Compression support** for large databases
+- [ ] **Cloud storage integration** (AWS S3, Google Cloud)
+- [ ] **Backup verification** and integrity checks
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### v2.2 (Future)
 
-### Development Guidelines
-
-- Follow existing code style
-- Add tests for new features
-- Update documentation
-- Test with real Supabase databases
-
-## 📋 FAQ
-
-### Q: Does this work with all Supabase plans?
-
-A: Yes! Works with Free, Pro, and Enterprise plans. Only requires service role key.
-
-### Q: Can I backup only specific tables?
-
-A: Yes, modify the `excludeDataTables` configuration or create custom scripts.
-
-### Q: How large databases can this handle?
-
-A: Tested with databases up to 10GB+. Uses chunked processing for large tables.
-
-### Q: Is this safe for production databases?
-
-A: Yes, uses read-only operations. No data is modified during backup.
-
-### Q: Can I schedule automated backups?
-
-A: Yes, use cron jobs, GitHub Actions, or cloud schedulers with this script.
+- [ ] **Real-time sync** capabilities
+- [ ] **Web dashboard** for backup management
+- [ ] **Multi-database** backup orchestration
+- [ ] **Advanced scheduling** with conflict detection
 
 ## 📝 License
 
@@ -329,17 +425,18 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - [Supabase](https://supabase.com/) for the amazing database platform
 - [PostgreSQL](https://www.postgresql.org/) for the robust database engine
-- Contributors and testers who helped improve this tool
+- The open-source community for contributions and feedback
 
 ## 📧 Support
 
 - 🐛 **Bug Reports**: [GitHub Issues](https://github.com/Raihan-Sharif/supabase-backup-system/issues)
 - 💡 **Feature Requests**: [GitHub Discussions](https://github.com/Raihan-Sharif/supabase-backup-system/discussions)
-- 📖 **Documentation**: Check the generated README.md in backup folders
+- 📖 **Documentation**: Check generated README.md in backup folders
 - 💬 **Community**: Join our discussions for help and tips
 
 ---
 
+**Professional Supabase Backup System v2.0**  
 **Made with ❤️ for the Supabase community**
 
-⭐ **Star this repo if it helped you!** ⭐
+⭐ **Star this repo if it helps your production workflow!** ⭐
