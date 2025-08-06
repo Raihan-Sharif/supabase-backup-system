@@ -1,6 +1,8 @@
 # 🚀 Professional Supabase Backup & Restore System v2.0
 
-**The most comprehensive, production-ready backup solution for Supabase databases** - now with complete function definitions, enhanced schema extraction, and professional-grade reliability.
+**🌐 UNIVERSAL - Works with ANY Supabase Database**
+
+**The most comprehensive, production-ready backup solution for Supabase databases** - now with complete function definitions, enhanced schema extraction, professional-grade reliability, and **universal compatibility**.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen)](https://nodejs.org/)
@@ -9,12 +11,21 @@
 
 ## ✨ What's New in v2.0
 
+### 🌐 Universal Compatibility
+
+- ✅ **Works with ANY Supabase database** - no setup required!
+- ✅ **Multiple fallback methods** for maximum compatibility
+- ✅ **No custom functions required** (but enhanced with optional setup)
+- ✅ **Generic schema discovery** works everywhere
+- ✅ **Graceful degradation** when permissions are limited
+
 ### 🔧 Complete Function Extraction
 
-- ✅ **Full function code** with complete CREATE FUNCTION statements
+- ✅ **Full function code** with complete CREATE FUNCTION statements (when available)
 - ✅ **Function bodies** extracted with proper syntax
 - ✅ **Arguments and return types** preserved
 - ✅ **Comments and metadata** included
+- ✅ **Generic function discovery** via REST API
 
 ### 🏗️ Enhanced Schema Coverage
 
@@ -24,6 +35,7 @@
 - ✅ **Sequences** with current values
 - ✅ **Indexes** with complete definitions
 - ✅ **RLS Policies** with exact conditions
+- ✅ **Enums** with all values and definitions
 
 ### 💼 Professional Features
 
@@ -44,6 +56,7 @@
 | Triggers     | ❌            | ✅                   | Full trigger statements            |
 | RLS Policies | ⚠️ Basic      | ✅ **Complete**      | Exact policy conditions            |
 | Indexes      | ❌            | ✅                   | All indexes with definitions       |
+| Enums        | ❌            | ✅                   | Custom types with all values       |
 | Sequences    | ❌            | ✅                   | Sequences with current values      |
 | Constraints  | ❌            | ✅                   | Foreign keys, checks, unique       |
 
@@ -63,13 +76,16 @@ npm install
 cp .env.example .env
 ```
 
-### 2. Database Setup (Important!)
+### 2. Database Setup (Optional - For Enhanced Features)
 
-Run this SQL in your Supabase SQL Editor to enable complete schema extraction:
+**🌟 The backup system works immediately with ANY Supabase database!**
+
+For enhanced functionality (complete function code extraction), optionally run:
 
 ```sql
--- Copy and run the contents of enhanced-supabase-setup.sql
--- This enables function definition extraction and enhanced schema analysis
+-- Copy and run the contents of setup-optional.sql
+-- This enables complete function definition extraction
+-- ⚠️  OPTIONAL: System works fine without this!
 ```
 
 ### 3. Configuration
